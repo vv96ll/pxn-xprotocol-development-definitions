@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "com.pxn.xprotocol.development-profile.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "environment",
+    "profile_id",
+    "profile_version",
+    "production_eligible",
+    "xprotocol",
+    "identifiers",
+    "credentials",
+    "ota"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "environment": { "const": "development" },
+    "profile_id": { "type": "string", "format": "uuid" },
+    "profile_version": { "type": "string", "minLength": 1 },
+    "production_eligible": { "const": false },
+    "xprotocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wire_major", "wire_minor"],
+      "properties": {
+        "wire_major": { "const": 1 },
+        "wire_minor": { "const": 1 }
+      }
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "development_uuid_namespace",
+        "usb_bulk_device_interface_guid"
+      ],
+      "properties": {
+        "development_uuid_namespace": { "type": "string", "format": "uuid" },
+        "usb_bulk_device_interface_guid": {
+          "type": "string",
+          "pattern": "^\\{[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\\}$"
+        }
+      }
+    },
+    "credentials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "credential_set_id",
+        "credential_set_version"
+      ],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "credential_set_id": { "type": "string", "format": "uuid" },
+        "credential_set_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "ota": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signature", "encryption"],
+      "properties": {
+        "signature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "algorithm", "key_id", "public_key_sha256"],
+          "properties": {
+            "required": { "const": true },
+            "algorithm": { "const": "ECDSA_P256_SHA256_RAW_RS_LOW_S" },
+            "key_id": { "type": "integer", "minimum": 1, "maximum": 65535 },
+            "public_key_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        },
+        "encryption": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "optional",
+            "plaintext_packages_allowed",
+            "algorithm",
+            "key_id",
+            "key_bytes",
+            "nonce_bytes",
+            "tag_bytes",
+            "key_hex"
+          ],
+          "properties": {
+            "optional": { "const": true },
+            "plaintext_packages_allowed": { "const": true },
+            "algorithm": { "const": "AES_256_GCM" },
+            "key_id": { "type": "integer", "minimum": 1, "maximum": 65535 },
+            "key_bytes": { "const": 32 },
+            "nonce_bytes": { "const": 12 },
+            "tag_bytes": { "const": 16 },
+            "key_hex": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    }
+  }
+}

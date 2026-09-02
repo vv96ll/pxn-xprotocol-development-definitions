@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "environment": "development",
+  "profile_id": "9AAC6EF3-E3CA-4021-83C2-5D61BF1E0F57",
+  "profile_version": "1.0.0-dev.1",
+  "production_eligible": false,
+  "xprotocol": {
+    "wire_major": 1,
+    "wire_minor": 1
+  },
+  "identifiers": {
+    "development_uuid_namespace": "9AAC6EF3-E3CA-4021-83C2-5D61BF1E0F57",
+    "usb_bulk_device_interface_guid": "{3D30E514-0256-5969-82FC-DEAC2537DCE6}"
+  },
+  "credentials": {
+    "repository": "git@192.168.66.225:chenjuwei/pxn-development-credentials.git",
+    "commit": "747a342f2242af8d76b90b42a1555e42c7978886",
+    "credential_set_id": "23aaea2a-a511-4e3d-9a95-34f8e00a48ef",
+    "credential_set_version": "1.0.0-dev.1"
+  },
+  "ota": {
+    "signature": {
+      "required": true,
+      "algorithm": "ECDSA_P256_SHA256_RAW_RS_LOW_S",
+      "key_id": 1,
+      "public_key_sha256": "41f74fc8b96b829d78a7f801e9d3b8f4a7eb34d63d98a4e6e1874288c1ba90d6"
+    },
+    "encryption": {
+      "optional": true,
+      "plaintext_packages_allowed": true,
+      "algorithm": "AES_256_GCM",
+      "key_id": 1,
+      "key_bytes": 32,
+      "nonce_bytes": 12,
+      "tag_bytes": 16,
+      "key_hex": "01013c4122397c110a94b0d1fb1908a305bf41643d6f3fd3e86ef604f5bbe8c2"
+    }
+  }
+}

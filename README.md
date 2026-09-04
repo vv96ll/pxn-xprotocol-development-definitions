@@ -17,6 +17,8 @@ fixtures.
 
 The active definition is
 [`definitions/development_profile_v1.json`](definitions/development_profile_v1.json).
+Version `1.1.0-dev.1` declares compatibility with XProtocol Wire 1.2 while
+retaining the same development-only identifiers and credential-set reference.
 
 ## Development boundary
 

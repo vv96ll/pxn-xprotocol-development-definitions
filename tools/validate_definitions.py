@@ -35,7 +35,7 @@ def main() -> int:
     require(profile["environment"] == "development", "environment must be development")
     require(profile["production_eligible"] is False, "development profile cannot be production eligible")
     require(profile["profile_version"] == version, "VERSION/profile_version mismatch")
-    require(profile["xprotocol"] == {"wire_major": 1, "wire_minor": 2}, "Wire version mismatch")
+    require(profile["xprotocol"] == {"wire_major": 1, "wire_minor": 3}, "Wire version mismatch")
 
     profile_id = canonical_uuid(profile["profile_id"])
     namespace = canonical_uuid(profile["identifiers"]["development_uuid_namespace"])

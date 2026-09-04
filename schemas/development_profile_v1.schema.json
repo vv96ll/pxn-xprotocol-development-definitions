@@ -26,7 +26,7 @@
       "required": ["wire_major", "wire_minor"],
       "properties": {
         "wire_major": { "const": 1 },
-        "wire_minor": { "const": 2 }
+        "wire_minor": { "const": 3 }
       }
     },
     "identifiers": {

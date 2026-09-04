@@ -2,11 +2,11 @@
   "schema_version": 1,
   "environment": "development",
   "profile_id": "9AAC6EF3-E3CA-4021-83C2-5D61BF1E0F57",
-  "profile_version": "1.0.0-dev.1",
+  "profile_version": "1.1.0-dev.1",
   "production_eligible": false,
   "xprotocol": {
     "wire_major": 1,
-    "wire_minor": 1
+    "wire_minor": 2
   },
   "identifiers": {
     "development_uuid_namespace": "9AAC6EF3-E3CA-4021-83C2-5D61BF1E0F57",

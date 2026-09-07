@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import argparse
 import re
 import uuid
 from pathlib import Path
@@ -35,7 +37,15 @@ def main() -> int:
     require(profile["environment"] == "development", "environment must be development")
     require(profile["production_eligible"] is False, "development profile cannot be production eligible")
     require(profile["profile_version"] == version, "VERSION/profile_version mismatch")
-    require(profile["xprotocol"] == {"wire_major": 1, "wire_minor": 4}, "Wire version mismatch")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--core-repo", type=Path, default=root.parent / "pxn-xprotocol-core")
+    args = parser.parse_args()
+    authority = args.core_repo / "schemas/current.yaml"
+    require(profile["xprotocol"] == {
+        "authority": "schemas/current.yaml",
+        "schema_sha256": hashlib.sha256(authority.read_bytes().replace(b'\r\n', b'\n')).hexdigest(),
+        "wire_version": None,
+    }, "current Core contract binding mismatch")
 
     profile_id = canonical_uuid(profile["profile_id"])
     namespace = canonical_uuid(profile["identifiers"]["development_uuid_namespace"])

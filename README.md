@@ -17,8 +17,12 @@ fixtures.
 
 The active definition is
 [`definitions/development_profile_v1.json`](definitions/development_profile_v1.json).
-Version `1.3.0-dev.1` declares compatibility with XProtocol Wire 1.4 while
-retaining the same development-only identifiers and credential-set reference.
+Version `2.0.0-dev.1` binds the current Core schema by SHA-256, with no assigned
+released Wire version. Package version and schema format version are independent.
+Development identifiers and credential values remain unchanged. Validate against
+the selected Core checkout before use (`--core-repo PATH`). Product OTA integration
+still requires its installation and authorization providers; this profile does
+not establish their implementation or qualification.
 
 ## Development boundary
 

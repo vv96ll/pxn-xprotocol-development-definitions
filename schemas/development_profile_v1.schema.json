@@ -15,18 +15,45 @@
     "ota"
   ],
   "properties": {
-    "schema_version": { "const": 1 },
-    "environment": { "const": "development" },
-    "profile_id": { "type": "string", "format": "uuid" },
-    "profile_version": { "type": "string", "minLength": 1 },
-    "production_eligible": { "const": false },
+    "schema_version": {
+      "const": 1
+    },
+    "environment": {
+      "const": "development"
+    },
+    "profile_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "production_eligible": {
+      "const": false
+    },
     "xprotocol": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["wire_major", "wire_minor"],
+      "required": [
+        "authority",
+        "schema_sha256",
+        "wire_version"
+      ],
       "properties": {
-        "wire_major": { "const": 1 },
-        "wire_minor": { "const": 4 }
+        "authority": {
+          "const": "schemas/current.yaml"
+        },
+        "schema_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "wire_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
     },
     "identifiers": {
@@ -37,7 +64,10 @@
         "usb_bulk_device_interface_guid"
       ],
       "properties": {
-        "development_uuid_namespace": { "type": "string", "format": "uuid" },
+        "development_uuid_namespace": {
+          "type": "string",
+          "format": "uuid"
+        },
         "usb_bulk_device_interface_guid": {
           "type": "string",
           "pattern": "^\\{[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\\}$"
@@ -54,26 +84,57 @@
         "credential_set_version"
       ],
       "properties": {
-        "repository": { "type": "string", "minLength": 1 },
-        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
-        "credential_set_id": { "type": "string", "format": "uuid" },
-        "credential_set_version": { "type": "string", "minLength": 1 }
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "credential_set_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "credential_set_version": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "ota": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["signature", "encryption"],
+      "required": [
+        "signature",
+        "encryption"
+      ],
       "properties": {
         "signature": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["required", "algorithm", "key_id", "public_key_sha256"],
+          "required": [
+            "required",
+            "algorithm",
+            "key_id",
+            "public_key_sha256"
+          ],
           "properties": {
-            "required": { "const": true },
-            "algorithm": { "const": "ECDSA_P256_SHA256_RAW_RS_LOW_S" },
-            "key_id": { "type": "integer", "minimum": 1, "maximum": 65535 },
-            "public_key_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            "required": {
+              "const": true
+            },
+            "algorithm": {
+              "const": "ECDSA_P256_SHA256_RAW_RS_LOW_S"
+            },
+            "key_id": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            "public_key_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
           }
         },
         "encryption": {
@@ -90,14 +151,33 @@
             "key_hex"
           ],
           "properties": {
-            "optional": { "const": true },
-            "plaintext_packages_allowed": { "const": true },
-            "algorithm": { "const": "AES_256_GCM" },
-            "key_id": { "type": "integer", "minimum": 1, "maximum": 65535 },
-            "key_bytes": { "const": 32 },
-            "nonce_bytes": { "const": 12 },
-            "tag_bytes": { "const": 16 },
-            "key_hex": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            "optional": {
+              "const": true
+            },
+            "plaintext_packages_allowed": {
+              "const": true
+            },
+            "algorithm": {
+              "const": "AES_256_GCM"
+            },
+            "key_id": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            "key_bytes": {
+              "const": 32
+            },
+            "nonce_bytes": {
+              "const": 12
+            },
+            "tag_bytes": {
+              "const": 16
+            },
+            "key_hex": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
           }
         }
       }

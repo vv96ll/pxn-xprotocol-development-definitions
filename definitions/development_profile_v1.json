@@ -2,11 +2,11 @@
   "schema_version": 1,
   "environment": "development",
   "profile_id": "9AAC6EF3-E3CA-4021-83C2-5D61BF1E0F57",
-  "profile_version": "2.0.0-dev.4",
+  "profile_version": "2.0.0-dev.5",
   "production_eligible": false,
   "xprotocol": {
     "authority": "schemas/current.yaml",
-    "schema_sha256": "eab32cf0271d57f1e792926f8682a0ba46643047cc75c03a5541e3bf24a12ed6",
+    "schema_sha256": "982c99294c62cb324bb72b60203e0a52684e99eec1a16ff2d3bc68411a430ed3",
     "wire_version": null
   },
   "identifiers": {

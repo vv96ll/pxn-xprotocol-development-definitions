@@ -17,7 +17,7 @@ fixtures.
 
 The active definition is
 [`definitions/development_profile_v1.json`](definitions/development_profile_v1.json).
-Version `2.0.0-dev.3` binds the current Core schema by SHA-256, with no assigned
+Version `2.0.0-dev.4` binds the current Core schema by SHA-256, with no assigned
 released Wire version. Package version and schema format version are independent.
 Development identifiers and credential values remain unchanged. Validate against
 the selected Core checkout before use (`--core-repo PATH`). Product OTA integration

@@ -6,7 +6,7 @@
   "production_eligible": false,
   "xprotocol": {
     "authority": "schemas/current.yaml",
-    "schema_sha256": "d9c4f93633ee0597b00db046c27a03e273e7e3c82ffde51870b57996f587f17a",
+    "schema_sha256": "c03b10bc8edd6eeeee77fbd73dd8d6c0b6557fff993e500f73167e2bea5c4962",
     "wire_version": null
   },
   "identifiers": {

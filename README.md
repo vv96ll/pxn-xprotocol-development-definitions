@@ -28,9 +28,8 @@ not establish their implementation or qualification.
 
 Development values and keys in this repository are intentionally shared for laboratory use. The
 development AES key is checked in so local firmware, Host and HIL use the same
-value without extra provisioning. P-256 development signing material is maintained locally here in Git-ignored
-`private/`, with
-public certificates in `public/` and the fingerprint manifest in
+value without extra provisioning. P-256 development signing private keys are
+committed in `private/`, with public certificates in `public/` and the fingerprint manifest in
 `development_credentials.json`. The profile binds that manifest by SHA-256.
 See [credential tooling](CREDENTIALS.md) for issuance and validation. Product/model/device UUIDs remain product-owned; the namespace here is
 only a deterministic development convention.

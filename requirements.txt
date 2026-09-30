@@ -1,0 +1,2 @@
+cryptography>=45,<47
+PyYAML>=6,<7

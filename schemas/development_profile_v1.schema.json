@@ -78,20 +78,12 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "repository",
-        "commit",
+        "manifest",
+        "manifest_sha256",
         "credential_set_id",
         "credential_set_version"
       ],
       "properties": {
-        "repository": {
-          "type": "string",
-          "minLength": 1
-        },
-        "commit": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{40}$"
-        },
         "credential_set_id": {
           "type": "string",
           "format": "uuid"
@@ -99,6 +91,13 @@
         "credential_set_version": {
           "type": "string",
           "minLength": 1
+        },
+        "manifest": {
+          "const": "development_credentials.json"
+        },
+        "manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
       }
     },

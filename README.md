@@ -11,7 +11,7 @@ fixtures.
 - the UUID namespace used when a development product needs deterministic UUIDs;
 - OTA signing and encryption key-slot IDs;
 - the signed-package and optional AES-256-GCM policy;
-- an immutable reference to the development credential set;
+- the development credential set, public certificates, signing keys and provisioning tools;
 - a fixed, checked-in development AES-256 key;
 - a validator for malformed or inconsistent definitions.
 
@@ -26,11 +26,13 @@ not establish their implementation or qualification.
 
 ## Development boundary
 
-Values in this repository are intentionally shared and are not secrets. The
+Development values and keys in this repository are intentionally shared for laboratory use. The
 development AES key is checked in so local firmware, Host and HIL use the same
-value without extra provisioning. P-256 signing material remains in the
-referenced `pxn-development-credentials` repository to avoid maintaining two
-copies. Product/model/device UUIDs remain product-owned; the namespace here is
+value without extra provisioning. P-256 development signing material is maintained locally here in Git-ignored
+`private/`, with
+public certificates in `public/` and the fingerprint manifest in
+`development_credentials.json`. The profile binds that manifest by SHA-256.
+See [credential tooling](CREDENTIALS.md) for issuance and validation. Product/model/device UUIDs remain product-owned; the namespace here is
 only a deterministic development convention.
 
 Definitions are marked `environment: development` and

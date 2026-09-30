@@ -14,10 +14,10 @@
     "usb_bulk_device_interface_guid": "{3D30E514-0256-5969-82FC-DEAC2537DCE6}"
   },
   "credentials": {
-    "repository": "git@192.168.66.225:chenjuwei/pxn-development-credentials.git",
-    "commit": "747a342f2242af8d76b90b42a1555e42c7978886",
     "credential_set_id": "23aaea2a-a511-4e3d-9a95-34f8e00a48ef",
-    "credential_set_version": "1.0.0-dev.1"
+    "credential_set_version": "1.0.0-dev.1",
+    "manifest": "development_credentials.json",
+    "manifest_sha256": "ed2592af47cec842f11f35962420ce8c3a72346195e0715d34187de9f32c58a9"
   },
   "ota": {
     "signature": {

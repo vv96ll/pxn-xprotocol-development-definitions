@@ -57,7 +57,13 @@ def main() -> int:
     require(canonical_uuid(interface_guid[1:-1]) == interface_guid[1:-1], "USB GUID must be canonical uppercase")
 
     credentials = profile["credentials"]
-    require(bool(HEX_40.fullmatch(credentials["commit"])), "credential commit must be 40 lowercase hex characters")
+    require(credentials["manifest"] == "development_credentials.json", "credential manifest path mismatch")
+    manifest_path = root / credentials["manifest"]
+    require(hashlib.sha256(manifest_path.read_bytes()).hexdigest() == credentials["manifest_sha256"], "credential manifest digest mismatch")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    for field in ("credential_set_id", "credential_set_version"):
+        require(credentials[field] == manifest[field], "credential manifest identity mismatch: " + field)
+    require(manifest["keys"]["ota_signing"]["public_key_sha256"] == profile["ota"]["signature"]["public_key_sha256"], "OTA signing fingerprint mismatch")
     uuid.UUID(credentials["credential_set_id"])
 
     signature = profile["ota"]["signature"]

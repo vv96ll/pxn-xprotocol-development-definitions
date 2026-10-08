@@ -47,6 +47,9 @@ def main() -> int:
         "wire_version": None,
     }, "current Core contract binding mismatch")
 
+    public_binding = json.loads((root / "definitions/development_binding_v1.json").read_text(encoding="utf-8"))
+    require(public_binding == {"schema_version": 1, "profile_version": version, "xprotocol": profile["xprotocol"]}, "public development binding mismatch")
+
     profile_id = canonical_uuid(profile["profile_id"])
     namespace = canonical_uuid(profile["identifiers"]["development_uuid_namespace"])
     require(profile_id == profile["profile_id"], "profile_id must be canonical uppercase UUID")

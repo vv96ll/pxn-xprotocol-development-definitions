@@ -17,7 +17,7 @@ fixtures.
 
 The active definition is
 [`definitions/development_profile_v1.json`](definitions/development_profile_v1.json).
-Version `2.0.0-dev.16` binds the current Core schema by SHA-256, with no assigned
+Version `2.0.0-dev.17` binds the current Core schema by SHA-256, with no assigned
 released Wire version. Package version and schema format version are independent.
 Development identifiers and credential values remain unchanged. Validate against
 the selected Core checkout before use (`--core-repo PATH`). Product OTA integration
@@ -46,3 +46,11 @@ python tools/validate_definitions.py
 ```
 
 The validator uses only the Python standard library.
+
+## Public binding checks
+
+`definitions/development_binding_v1.json` contains only the package version and
+Core binding. Workspace consumers validate this metadata from the selected Git
+commit without reading the credential-bearing profile. The full definitions
+validator also checks that the public binding matches the private profile;
+that full validation remains a separate, credential-authorized operation.

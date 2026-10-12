@@ -3,7 +3,7 @@
   "profile_version": "2.0.0-dev.17",
   "xprotocol": {
     "authority": "schemas/current.yaml",
-    "schema_sha256": "b1e81915dae58eb0dc1389af716824f070cc38a95c4a48bed3470bab778336ab",
+    "schema_sha256": "e5504a0db78719fc562165104208a00cb6c1b1450b0c61b9baea952b14a78df5",
     "wire_version": null
   }
 }
